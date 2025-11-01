@@ -23,8 +23,8 @@ function App() {
         margin: 0
     }
 
-    const WORKTIME = 0.1*60;
-    const BREAKTIME = 0.2*60;
+    let WORKTIME = 25*60;
+    let BREAKTIME = 5*60;
 
 
     const [time, setTime] = React.useState(WORKTIME);
@@ -38,6 +38,14 @@ function App() {
     function toggleTheme(them) {
         console.log('Тема переключается...');
         setTheme(them);
+    }
+
+    function changeWorktime(){
+        WORKTIME = Number(prompt("Количество минут работы:"))*60;
+        BREAKTIME = Number(prompt("Количество минут отдыха:"))*60;
+        setTime(WORKTIME);
+        setIsWorktime(true);
+        setIsRunning(false);
     }
 
     useEffect(() => {
@@ -105,6 +113,7 @@ function App() {
                               onOcean={() => {toggleTheme("ocean")}}
                               onForest={() => {toggleTheme("forest")}}
                               onDefault={() => {toggleTheme("default")}}
+                              onSetting={changeWorktime}
                 ></DropdownMenu>
             </div>
             <Timer text = {formatTime(time)}></Timer>
