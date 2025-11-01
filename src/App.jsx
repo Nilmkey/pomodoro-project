@@ -36,7 +36,6 @@ function App() {
 
 
     function toggleTheme(them) {
-        console.log('Тема переключается...');
         setTheme(them);
     }
 
@@ -70,11 +69,12 @@ function App() {
     function formatTime(time){
         const minutes = Math.floor(time/60);
         const hours = Math.floor(minutes/60);
+        const remMin = minutes - hours*60
         const remSec = time%60;
 
-        console.log(time)
 
-        return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${remSec.toString().padStart(2, "0")}`
+
+        return `${hours.toString().padStart(2, "0")}:${remMin.toString().padStart(2, "0")}:${remSec.toString().padStart(2, "0")}`
     }
 
     function changeSession(isWork){
@@ -90,7 +90,7 @@ function App() {
         timerRef.current = setInterval(()=>{
             if(isRunning){
                 setTime((prev) => {
-                    if(prev === 1){
+                    if(prev <= 1){
                         changeSession(isWorktime);
                         return isWorktime ? BREAKTIME : WORKTIME;
                     } else{
