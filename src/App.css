@@ -1,0 +1,33 @@
+
+
+body{
+    background-color: var(--background-color);
+    background-image: var(--background-image);
+    background-size: cover;          /* растягивает картинку на весь экран */
+    background-position: center;     /* выравнивает по центру */
+    background-repeat: no-repeat;    /* чтобы не повторялась */
+    background-attachment: fixed;    /* чтобы не двигалась при скролле (опционально) */
+}
+
+
+.container h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+.container {
+    margin-top: 30vh;
+    text-align: center;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: var(--background-color);
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    width: 320px;
+    transition: background-color 0.5s ease, background-image 0.8s ease;
+}
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 50px;
+}
+
